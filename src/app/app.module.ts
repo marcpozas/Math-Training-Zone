@@ -12,13 +12,15 @@ import { TrainingFirstPhaseComponent } from './src/app/components/training-first
 import { LoseComponent } from './src/app/components/training-first-phase/dialogs/lose/lose.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
+import { MusicPlayerComponent } from './src/app/components/music-player/music-player.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
     TrainingFirstPhaseComponent,
-    LoseComponent
+    LoseComponent,
+    MusicPlayerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,79 @@
+:host {
+
+    // .content-music-player {
+    //     z-index: -1;
+    //     position: absolute;
+    //     top: 85%;
+    //     // right: 82%;
+    //     display: flex;
+    //     flex-direction: row;
+    //     width: 100vw;
+    //     height: fit-content;
+    //     justify-content: space-between;
+    // }
+    .music-player {
+        position: absolute;
+        top: 86%;
+        left: 2%;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        height: 5rem;
+        width: 15rem;
+        padding: 0.5rem;
+        // margin-left: 2rem;
+        background-color: #34343464;
+        border-radius: 40px;
+        justify-content: space-evenly;
+        svg {
+            cursor: pointer;
+        }
+        path {
+            fill: #FFFFFF50;
+        }
+        .playButton {
+            stroke: transparent;
+            width: 4rem;
+        }
+        .pauseButton {
+            stroke: transparent;
+            width: 4rem;
+        }
+        .backButton, .forwardButton {
+            width: 3rem;
+        }
+        .playButton, .backButton, .forwardButton {
+            path {
+                transition: fill 0.2s ease;
+            }
+        }
+        .playButton:hover, .backButton:hover, .forwardButton:hover {
+            path {
+                fill: #ffffff8e
+            }
+        }
+    }
+    .mute-unmute-container {
+        position: absolute;
+        left: 90.5%;
+        top: 90%;
+        display: flex;
+        align-items: end;
+        margin-right: 2rem;
+        gap: 1.25rem;
+        svg {
+            width: 4rem;
+            cursor: pointer;
+            path {
+                stroke: #1E1E1E;
+                transition: stroke 0.2s ease;;
+            }
+        }
+        svg:hover {
+            path {
+                stroke: #1E1E1E70;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,13 @@
+:host {
+    // app-music-player {
+    //     position: absolute;
+    //     top: 85%;
+    //     right: 82%;
+    // }
+    app-landing {
+        z-index: 2;
+    }
+    app-music-player {
+        z-index: 1;
+    }
+}
