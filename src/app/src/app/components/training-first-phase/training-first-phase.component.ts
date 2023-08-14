@@ -100,6 +100,8 @@ export class TrainingFirstPhaseComponent {
   }
 
   public onCorrectAnswer() {
+    const correctSound = new Audio('assets/sounds/correct_sound.mp3');
+    correctSound.play();
     this.correctAnimation();
     let actualTimeToAdd = Math.round(5 * (1 - 1 / (1 + Math.exp(-0.05 * (this.completedOperations.length - 1)))) * 2);
     this.addTime(actualTimeToAdd);
@@ -108,6 +110,8 @@ export class TrainingFirstPhaseComponent {
   }
 
   public onWrongAnswer() {
+    const wrongSound = new Audio('assets/sounds/oof_steve_wrong_sound.mp3');
+    wrongSound.play();
     this.lives.actual -= 1;
     this.hitAnimation()
     this.setNewOperation();
