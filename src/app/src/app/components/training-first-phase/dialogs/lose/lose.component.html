@@ -1,0 +1,8 @@
+<div class="dialog-container">
+    <p class="title">Practice Over!</p>
+    <p class="info" [innerHTML]="loseMessage"></p>
+    <div class="buttons">
+        <button (click)="onRestart()" class="restart-button">Restart with same options</button>
+        <button (click)="onMenu()" class="restart-button">Go back to menu</button>
+    </div>
+</div>

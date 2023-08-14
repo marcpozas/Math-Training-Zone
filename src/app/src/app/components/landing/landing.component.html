@@ -1,0 +1,37 @@
+<header></header>
+<div class="content">
+    <div class="welcome">
+        <h1>Welcome to Math Training Zone!</h1>
+        <p>Personalize your math practice and get ready to have fun while improving your skills.</p>
+    </div>
+
+    <div class="options">
+        <div class="options-operations">
+            <p class="options-operations-title">Operations</p>
+            <button *ngFor="let operation of operations" (click)="onOperationCheck(operation)" class="options-single-operation">
+                <mat-icon>{{ operation.checked ? 'check_box' : 'check_box_outline_blank' }}</mat-icon>
+                <p>{{ operation.name }}</p>
+            </button>
+        </div>
+        <div class="options-right">
+            <div class="options-difficulty">
+                <p>Difficulty: <span class="actual-difficulty">{{ actualDifficultyLevel }}</span></p>
+                <mat-slider min="0" max="75" step="25" showTickMarks (input)="onSliderChange($event)">
+                    <input matSliderThumb>
+                </mat-slider>
+            </div>
+            <div class="options-lives">
+                <p>Lives: {{ lives }}</p>
+                <div class="live-icons">
+                    <svg *ngFor="let _ of range(10); let i = index" (click)="onHeartClick(i)"
+                    [class]="'heart-icon-' + i + ' heart-on'"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#FF3D3D" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart">
+                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="button-start bubbly-button" (click)="navigateToTraining()">Start Training!</button>
+</div>
+<footer></footer>

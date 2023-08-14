@@ -1,1 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Globals */
+// Palette
+:root {
+    --color-primary: #ED6A5A;
+    --color-secondary: #F7E987;
+    --color-tertiary: #5B9A8B;
+    --color-accent: #252B48;
+    --color-background: #445069;
+}
+
+/* Fonts */
+@font-face {
+    font-family: 'Inter';
+    src: url('./fonts/Inter/static/Inter-Medium.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Inter';
+    src: url('./fonts/Inter/static/Inter-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Inter';
+    src: url('./fonts/Inter/static/Inter-ExtraBold.ttf');
+    font-weight: bolder;
+    font-style: normal;
+}
+
+/* Default styling */
+.hit-animation {
+    background-color: #694444;
+}
+.correct-animation {
+    background-color: #446958;
+}
+body {
+    margin: 0;
+    background-color: var(--color-background);
+    transition: background-color 0.2s ease-out;
+}
+h1 {
+    font-size: 1.5em;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+p {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

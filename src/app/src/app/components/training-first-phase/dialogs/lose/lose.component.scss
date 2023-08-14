@@ -1,0 +1,58 @@
+:host {
+    .hit-animation {
+        background-color: red;
+    }
+    .dialog-container {
+        display: grid;
+        grid-template-rows: 5fr 3fr 8fr;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100%;
+        background-color: #F7D887;
+        border-radius: 40px;
+        box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    }
+    .title {
+        background-color: #C6A44F;
+        padding: 1rem 2rem;
+        border-radius: 40px;
+        color: #FFFFFF;
+        font-size: 48px;
+    }
+    .info {
+        background-color: #F0CC6E;
+        padding: 1rem 2rem;
+        font-size: 24px;
+        color: #1C1C1C;
+        border-radius: 40px;
+        line-height: 3rem;
+    }
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        button {
+            font-family: "Inter", sans-serif;
+            font-size: 18px;
+            padding: 1.5rem 2.5rem;
+            background-color: var(--color-primary);
+            border: none;
+            border: 3px solid var(--color-primary);
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #ffefef;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+            width: 23rem;
+            &:hover {
+                background-color: var(--color-background);
+                background-color: #ffd3bf;
+                color: var(--color-primary);
+            }
+        }
+    }
+}
