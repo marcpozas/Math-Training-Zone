@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-music-player',
@@ -10,6 +11,7 @@ export class MusicPlayerComponent {
 
   paused: boolean = true;
   musicMuted: boolean = false;
+  lastMusicVolume: number = 1.0;
   soundMuted: boolean = false;
   music: string[] = [
     'Antonio Vivaldi - Winter (Full) - The Four Seasons.mp3',
@@ -26,14 +28,16 @@ export class MusicPlayerComponent {
     'Tchaikovsky - Valse Sentimentale.mp3'
   ];
   currentMusic: any;
+  currentMusicString: string = '';
+  currentVolume: string = '0.1';
+
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.music = this.shuffleArray(this.music)
     this.currentMusic = new Audio(`assets/music/${this.music[0]}`);
-    this.currentMusic.volume = '0.1';
-
+    this.currentMusicString = this.music[0];
+    this.currentMusic.volume = this.currentVolume;
   }
 
   public shuffleArray<T>(array: T[]): T[] {
@@ -56,15 +60,45 @@ export class MusicPlayerComponent {
   }
 
   public onForwardButton(event: any) {
-    
+    this.currentMusic.pause();
+    let currentIndex = this.music.indexOf(this.currentMusicString);
+    console.log("current: " + this.music[currentIndex]);
+    if (currentIndex < this.music.length-1) {
+      console.log("next: " + this.music[currentIndex + 1]);
+      this.currentMusicString = this.music[currentIndex + 1];
+      this.currentMusic = new Audio(`assets/music/${this.music[currentIndex + 1]}`);
+    } else {
+      console.log("next: " + this.music[0]);
+      this.currentMusicString = this.music[0];
+      this.currentMusic = new Audio(`assets/music/${this.music[0]}`);
+    }
+    this.currentMusic.play();
   }
 
   public onBackButton(event: any) {
-    console.log(event.target);
+    this.currentMusic.pause();
+    let currentIndex = this.music.indexOf(this.currentMusicString);
+    console.log("current: " + this.music[currentIndex]);
+    if (currentIndex > 0) {
+      console.log("previous: " + this.music[currentIndex - 1]);
+      this.currentMusicString = this.music[currentIndex - 1];
+      this.currentMusic = new Audio(`assets/music/${this.music[currentIndex - 1]}`);
+    } else {
+      console.log("previous: " + this.music[this.music.length-1]);
+      this.currentMusicString = this.music[this.music.length-1];
+      this.currentMusic = new Audio(`assets/music/${this.music[this.music.length-1]}`);
+    }
+    this.currentMusic.play();
   }
 
   public onMusicButton(event: any) {
     this.musicMuted = !this.musicMuted;
+    if (this.musicMuted) {
+      this.lastMusicVolume = this.currentMusic.volume;
+      this.currentMusic.volume = 0.0;
+    } else {
+      this.currentMusic.volume = this.lastMusicVolume;
+    }
   }
 
   public onSoundButton(event: any) {
