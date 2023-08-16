@@ -114,14 +114,24 @@
     }
     .settings-svg {
         width: 4rem;
+        // fill: #ffffff;
         cursor: pointer;
         path {
             fill: #1E1E1E;
+            transition: all 0.2s ease;
         }
         circle {
             stroke: #1E1E1E;
+            transition: all 0.2s ease;
         }
-        
+        &:hover {
+            path {
+                fill: #363636;
+            }
+            circle {
+                stroke: #363636;
+            }
+        }
     }
 
 }
