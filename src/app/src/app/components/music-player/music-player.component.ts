@@ -128,9 +128,10 @@ export class MusicPlayerComponent {
       data: data,
       autoFocus: false,
       width: '25rem',
-      height: '30rem',
+      height: '13rem',
       disableClose: false,
-      hasBackdrop: true
+      hasBackdrop: true,
+      panelClass: 'settings-dialog'
     };
     const dialogRef: MatDialogRef<SettingsComponent> = this.dialog.open(SettingsComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {

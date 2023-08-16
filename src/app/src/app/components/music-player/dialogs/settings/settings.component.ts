@@ -20,10 +20,12 @@ export class SettingsComponent {
   }
 
   public onMusicSliderChange(event: any): void {
+    this.musicVolume = event.target.value;
     this.volumeControlService.setMusicVolume(event.target.value/100);
   }
 
   public onSoundSliderChange(event: any): void {
+    this.soundVolume = event.target.value;
     this.volumeControlService.setSoundVolume(event.target.value/100);
   }
 }
