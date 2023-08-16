@@ -1,0 +1,22 @@
+:host {
+    .settings-panel {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        border-radius: 40px;
+    }
+    .music-slider,
+    .sounds-slider {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 80%;
+    }
+    mat-slider {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+}

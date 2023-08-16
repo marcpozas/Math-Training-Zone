@@ -1,0 +1,14 @@
+<div class="settings-panel">
+    <div class="music-slider">
+        <p>Music volume</p>
+        <mat-slider min="0" max="100" step="1" (input)="onMusicSliderChange($event)">
+            <input [value]="musicVolume" matSliderThumb>
+        </mat-slider>
+    </div>
+    <div class="sounds-slider">
+        <p>Sound effects volume</p>
+        <mat-slider min="0" max="100" step="1" (input)="onSoundSliderChange($event)">
+            <input [value]="soundVolume" matSliderThumb>
+        </mat-slider>
+    </div>
+</div>

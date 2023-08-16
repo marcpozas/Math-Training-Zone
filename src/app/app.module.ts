@@ -13,6 +13,7 @@ import { LoseComponent } from './src/app/components/training-first-phase/dialogs
 import { MatDialogModule } from '@angular/material/dialog';
 import { HttpClientModule } from '@angular/common/http';
 import { MusicPlayerComponent } from './src/app/components/music-player/music-player.component';
+import { SettingsComponent } from './src/app/components/music-player/dialogs/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MusicPlayerComponent } from './src/app/components/music-player/music-pl
     LandingComponent,
     TrainingFirstPhaseComponent,
     LoseComponent,
-    MusicPlayerComponent
+    MusicPlayerComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,

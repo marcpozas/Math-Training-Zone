@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SettingsService } from '../services/settings.service';
 import { DataService } from '../services/data.service';
 import { OperationDataset } from '../models/OperationDataset';
+import { VolumeControlService } from '../services/volume-control.service';
 
 @Component({
   selector: 'app-training-first-phase',
@@ -38,7 +39,8 @@ export class TrainingFirstPhaseComponent {
               private route: ActivatedRoute,
               private settingsService: SettingsService,
               private dataService: DataService,
-              private router: Router) {}
+              private router: Router,
+              private volumeControlService: VolumeControlService) {}
 
   ngOnInit() {
     this.actualDifficultyLevel = this.settingsService.getDifficulty;
@@ -101,6 +103,7 @@ export class TrainingFirstPhaseComponent {
 
   public onCorrectAnswer() {
     const correctSound = new Audio('assets/sounds/correct_sound.mp3');
+    correctSound.volume = this.volumeControlService.getSoundVolume();
     correctSound.play();
     this.correctAnimation();
     let actualTimeToAdd = Math.round(5 * (1 - 1 / (1 + Math.exp(-0.05 * (this.completedOperations.length - 1)))) * 2);
@@ -111,6 +114,7 @@ export class TrainingFirstPhaseComponent {
 
   public onWrongAnswer() {
     const wrongSound = new Audio('assets/sounds/oof_steve_wrong_sound.mp3');
+    wrongSound.volume = this.volumeControlService.getSoundVolume();
     wrongSound.play();
     this.lives.actual -= 1;
     this.hitAnimation()

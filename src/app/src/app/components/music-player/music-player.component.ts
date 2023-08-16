@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ThisReceiver } from '@angular/compiler';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { SettingsComponent } from './dialogs/settings/settings.component';
+import { VolumeControlService } from '../services/volume-control.service';
 
 @Component({
   selector: 'app-music-player',
@@ -29,15 +32,21 @@ export class MusicPlayerComponent {
   ];
   currentMusic: any;
   currentMusicString: string = '';
-  currentVolume: string = '0.1';
+  // currentVolume: string = '0.1';
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private dialog: MatDialog,
+              private volumeControlService: VolumeControlService) { }
 
   ngOnInit(): void {
     this.currentMusic = new Audio(`assets/music/${this.music[0]}`);
     this.currentMusicString = this.music[0];
-    this.currentMusic.volume = this.currentVolume;
+    // this.currentMusic.volume = this.currentVolume;
+    // this.currentMusic.volume = this.volumeControlService.getMusicVolume();
+    // Subscribe to music volume changes
+    this.volumeControlService.musicVolume$.subscribe(newVolume => {
+      this.currentMusic.volume = this.volumeControlService.getMusicVolume();
+    });
   }
 
   public shuffleArray<T>(array: T[]): T[] {
@@ -72,6 +81,7 @@ export class MusicPlayerComponent {
       this.currentMusicString = this.music[0];
       this.currentMusic = new Audio(`assets/music/${this.music[0]}`);
     }
+    this.currentMusic.volume = this.volumeControlService.getMusicVolume();
     this.currentMusic.play();
   }
 
@@ -88,22 +98,43 @@ export class MusicPlayerComponent {
       this.currentMusicString = this.music[this.music.length-1];
       this.currentMusic = new Audio(`assets/music/${this.music[this.music.length-1]}`);
     }
+    this.currentMusic.volume = this.volumeControlService.getMusicVolume();
     this.currentMusic.play();
   }
 
-  public onMusicButton(event: any) {
-    this.musicMuted = !this.musicMuted;
-    if (this.musicMuted) {
-      this.lastMusicVolume = this.currentMusic.volume;
-      this.currentMusic.volume = 0.0;
-    } else {
-      this.currentMusic.volume = this.lastMusicVolume;
-    }
-  }
+  // public onMusicButton(event: any) {
+  //   this.musicMuted = !this.musicMuted;
+  //   if (this.musicMuted) {
+  //     this.lastMusicVolume = this.currentMusic.volume;
+  //     this.currentMusic.volume = 0.0;
+  //   } else {
+  //     this.currentMusic.volume = this.lastMusicVolume;
+  //   }
+  // }
 
   public onSoundButton(event: any) {
     this.soundMuted = !this.soundMuted;
-    
   }
 
+  removeSuffix(songName: string): string {
+    return songName.replace('.mp3', '');
+  }
+
+  public openSettingsDialog():void {
+
+    const data = {
+    }
+    const dialogConfig: MatDialogConfig = {
+      data: data,
+      autoFocus: false,
+      width: '25rem',
+      height: '30rem',
+      disableClose: false,
+      hasBackdrop: true
+    };
+    const dialogRef: MatDialogRef<SettingsComponent> = this.dialog.open(SettingsComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+    });
+
+  }
 }

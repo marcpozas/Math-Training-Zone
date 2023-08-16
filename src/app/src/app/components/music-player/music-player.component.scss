@@ -52,6 +52,43 @@
                 fill: #ffffff8e
             }
         }
+        .song-title-container {
+            position: absolute;
+            top: -30%;
+            overflow-x: hidden;
+            white-space: nowrap;
+            width: 12rem;
+            .song-title {
+                // transition: transform 10s;
+                width: fit-content;
+                animation: marquee 10s infinite linear;
+                animation-play-state: running;
+                opacity: 0;
+                color: #1E1E1E;
+                transition: opacity 1s ease;
+            }
+            &:hover {
+                .song-title {
+                    // transform: translateX(-100%);
+                    animation-play-state: paused;
+                }
+            }
+        }
+        @keyframes marquee {
+            0% {
+            //   transform: translateX(85%);
+            transform: translateX(110%);
+            }
+            100% {
+            //   transform: translateX(-110%);
+            transform: translateX(-110%);
+            }
+        }
+        &:hover {
+            .song-title {
+                opacity: 1 !important;
+            }
+        }
     }
     .mute-unmute-container {
         position: absolute;
@@ -61,19 +98,30 @@
         align-items: end;
         margin-right: 2rem;
         gap: 1.25rem;
-        svg {
-            width: 4rem;
-            cursor: pointer;
-            path {
-                stroke: #1E1E1E;
-                transition: stroke 0.2s ease;;
-            }
+        // svg {
+        //     width: 4rem;
+        //     cursor: pointer;
+        //     path {
+        //         stroke: #1E1E1E;
+        //         transition: stroke 0.2s ease;;
+        //     }
+        // }
+        // svg:hover {
+        //     path {
+        //         stroke: #1E1E1E70;
+        //     }
+        // }
+    }
+    .settings-svg {
+        width: 4rem;
+        cursor: pointer;
+        path {
+            fill: #1E1E1E;
         }
-        svg:hover {
-            path {
-                stroke: #1E1E1E70;
-            }
+        circle {
+            stroke: #1E1E1E;
         }
+        
     }
 
 }
