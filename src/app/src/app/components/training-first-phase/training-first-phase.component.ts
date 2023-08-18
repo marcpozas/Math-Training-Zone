@@ -46,8 +46,8 @@ export class TrainingFirstPhaseComponent {
     this.actualDifficultyLevel = this.settingsService.getDifficulty;
     this.dataService.getSubset(this.actualDifficultyLevel).subscribe(data => {
       this.dataset = data;
-      this.dataset = this.getSmallSubset()
       this.operationTypes = this.settingsService.getOperations;
+      this.dataset = this.getSmallSubset()
       this.lives.initial = this.lives.actual = this.settingsService.getLives;
 
       this.setNewOperation();
@@ -191,17 +191,6 @@ export class TrainingFirstPhaseComponent {
   }
 
   public async setNewOperation() {
-    const operationSymbolMap: { [key: string]: string[] } = {
-      'Addition': ['+'],
-      'Substraction': ['-'],
-      'Multiplication': ['*'],
-      'Division': ['/','/.'],
-      'Root': ['sqrt'],
-      'Exponentiation': ['**'],
-    };
-    
-    const operationSymbols = this.operationTypes.flatMap(name => operationSymbolMap[name]);
-    let operationFound = false
     let randomOperation: OperationDataset = {
       operation: "",
       solution: "",
@@ -209,32 +198,16 @@ export class TrainingFirstPhaseComponent {
       signs: [],
       numbers: []
     }
-
-    while (!operationFound) {
-      if (!operationSymbols.includes(randomOperation.signs[0])) {
-        randomOperation = this.dataset[Math.floor(Math.random() * this.dataset.length)];
-      } else {
-        operationFound = true;
-      }
-    }
+    randomOperation = this.dataset[Math.floor(Math.random() * this.dataset.length)];
     if (randomOperation.signs.includes('sqrt')) {
-      this.actualOperation = {
-        operation: "√" + randomOperation.operation.split(" ")[1],
-        solution: randomOperation.solution,
-        difficulty: randomOperation.difficulty
-      }
+      randomOperation.operation = "√" + randomOperation.operation.split(" ")[1];
     } else if (randomOperation.signs.includes('**')) {
-      this.actualOperation = {
-        operation: randomOperation.operation.replace("**", "^"),
-        solution: randomOperation.solution,
-        difficulty: randomOperation.difficulty
-      }
-    } else {
-      this.actualOperation = {
-        operation: randomOperation.operation,
-        solution: randomOperation.solution,
-        difficulty: randomOperation.difficulty
-      }
+      randomOperation.operation = randomOperation.operation.replace("**", "^");
+    }
+    this.actualOperation = {
+      operation: randomOperation.operation,
+      solution: randomOperation.solution,
+      difficulty: randomOperation.difficulty
     }
   }
 
@@ -248,17 +221,19 @@ export class TrainingFirstPhaseComponent {
 
   public getSmallSubset(): OperationDataset[] {
     let newDataset: OperationDataset[] = [];
-
-    let actualDataset: { [key: string]: OperationDataset[] } = {
-      '+': [],
-      '-': [],
-      '*': [],
-      '/': [],
-      '/.': [],
-      '**': [],
-      'sqrt': []
+    const operationSymbolMap: { [key: string]: string[] } = {
+      'Addition': ['+'],
+      'Substraction': ['-'],
+      'Multiplication': ['*'],
+      'Division': ['/','/.'],
+      'Root': ['sqrt'],
+      'Exponentiation': ['**'],
     };
-
+    const operationSymbols = this.operationTypes.flatMap(name => operationSymbolMap[name]);
+    let actualDataset: { [key: string]: OperationDataset[] } = {};
+    for (const symbol of operationSymbols) {
+      actualDataset[symbol] = [];
+    }
     for (let operation of this.dataset) {
       try {
         actualDataset[operation.signs[0]].push(operation);
@@ -267,8 +242,7 @@ export class TrainingFirstPhaseComponent {
         console.log(error);
       }
     }
-
-    ['+', '-', '*', '/', '/.', '**', 'sqrt'].forEach(sign => {
+    operationSymbols.forEach(sign => {
       let signDataset: OperationDataset[] = [];
       try {
         if (actualDataset[sign].length > 100) {
