@@ -74,6 +74,14 @@ export class LandingComponent {
     if (activeBarElement) {
       this.renderer.setStyle(activeBarElement, 'border-color', level.color, RendererStyleFlags2.Important);
     }
+    // const levelBar = document.querySelector(".options-difficulty");
+    // if (levelBar) {      
+    //   if (level.level == 'extreme') {
+    //     levelBar.classList.add('shake')
+    //   } else if (levelBar.classList.contains('shake')) {
+    //     levelBar.classList.remove('shake')
+    //   }
+    // }
   }
 
   public range(number: number): number[] {
