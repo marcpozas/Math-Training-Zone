@@ -33,6 +33,7 @@ export class TrainingFirstPhaseComponent {
   timeBarWidth = 100;
   isLose: boolean = false;
   interval: any;
+  isLoading: boolean = true;
 
   constructor(private renderer: Renderer2,
               private dialog: MatDialog,
@@ -60,6 +61,11 @@ export class TrainingFirstPhaseComponent {
         }
       }, 1000);
     });
+
+    // // Add a timeout before setting isLoading to false
+    // setTimeout(() => {
+    this.isLoading = false;
+    // }, 50000); // 5 seconds timeout
   }
 
   ngAfterViewInit() {

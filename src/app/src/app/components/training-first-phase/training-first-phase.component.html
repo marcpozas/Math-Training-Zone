@@ -15,4 +15,7 @@
             <input #operationInput #submitButton class="operation-input-field" type="text" placeholder="">
         </div>
     </div>
+    <div class="loading-container" *ngIf="isLoading">
+        <div class="loading-circle"></div>
+    </div>
 </div>
