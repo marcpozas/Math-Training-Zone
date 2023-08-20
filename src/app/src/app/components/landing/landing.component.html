@@ -17,7 +17,7 @@
             <div class="options-difficulty">
                 <p>Difficulty: <span class="actual-difficulty">{{ actualDifficultyLevel }}</span></p>
                 <mat-slider min="0" max="75" step="25" showTickMarks (input)="onSliderChange($event)">
-                    <input matSliderThumb>
+                    <input [value]="getDifficultyPoints()" matSliderThumb>
                 </mat-slider>
             </div>
             <div class="options-lives">

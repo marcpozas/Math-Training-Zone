@@ -244,8 +244,9 @@ export class TrainingFirstPhaseComponent {
       try {
         actualDataset[operation.signs[0]].push(operation);
       } catch (error) {
-        console.log(operation);
-        console.log(error);
+        // console.log(actualDataset);
+        // console.log(operation);
+        // console.log(error);
       }
     }
     operationSymbols.forEach(sign => {
