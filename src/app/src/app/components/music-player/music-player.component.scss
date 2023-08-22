@@ -96,7 +96,7 @@
         top: 90%;
         display: flex;
         align-items: end;
-        margin-right: 2rem;
+        // margin-right: 2rem;
         gap: 1.25rem;
         // svg {
         //     width: 4rem;
@@ -134,4 +134,19 @@
         }
     }
 
+    @media (max-width: 1248px) {
+        .mute-unmute-container {
+            left: 90%;
+        }
+    }
+    @media (max-width: 768px) {
+        .mute-unmute-container {
+            left: 85%;
+        }
+    }
+}
+@media (max-width: 991px) {
+    ::ng-deep app-music-player {
+        display: none;
+    }
 }

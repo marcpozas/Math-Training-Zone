@@ -8,10 +8,12 @@
     <div class="options">
         <div class="options-operations">
             <p class="options-operations-title">Operations</p>
-            <button *ngFor="let operation of operations" (click)="onOperationCheck(operation)" class="options-single-operation">
-                <mat-icon>{{ operation.checked ? 'check_box' : 'check_box_outline_blank' }}</mat-icon>
-                <p>{{ operation.name }}</p>
-            </button>
+            <div>
+                <button *ngFor="let operation of operations" (click)="onOperationCheck(operation)" class="options-single-operation">
+                    <mat-icon>{{ operation.checked ? 'check_box' : 'check_box_outline_blank' }}</mat-icon>
+                    <p>{{ operation.name }}</p>
+                </button>
+            </div>
         </div>
         <div class="options-right">
             <div class="options-difficulty">

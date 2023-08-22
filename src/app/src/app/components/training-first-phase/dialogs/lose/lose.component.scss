@@ -55,4 +55,54 @@
             }
         }
     }
+
+    @media (max-width: 991px) {
+        .dialog-container {
+            .info {
+                font-size: 18px;
+            }
+            .title {
+                font-size: 36px;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        .dialog-container {
+            .info {
+                font-size: 14px;
+            }
+            .title {
+                display: flex;
+                // font-size: 32px;
+                width: fit-content;
+                justify-self: center;
+            }
+            button {
+                padding: 1rem 2rem;
+                font-size: 16px;
+            }
+        }
+    }
+
+    @media (max-width: 520px) {
+        .dialog-container {
+            .info {
+                font-size: 10px;
+            }
+            .title {
+                font-size: 32px;
+                width: fit-content;
+                justify-self: center;
+            }
+            .buttons {
+                gap: 2rem;
+            }
+            button {
+                padding: 0.5rem 1rem;
+                font-size: 14px;
+                width: 90%;
+            }
+        }
+    }
 }

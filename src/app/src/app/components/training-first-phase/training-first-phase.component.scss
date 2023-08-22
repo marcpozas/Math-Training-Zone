@@ -12,6 +12,7 @@
         background-color: #B6B9C3;
         margin: 5rem 0 1rem 0;
         width: 60rem;
+        width: min(60rem,90%);
         height: 3rem;
         border-radius: 5px;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1450980392);
@@ -39,6 +40,7 @@
         background-color: var(--color-tertiary);
         margin: 5rem 0;
         width: 60rem;
+        width: min(60rem,90%);
         height: 30rem;
         border-radius: 5px;
         gap: 6rem;
@@ -51,6 +53,7 @@
         background-color: rgb(141, 191, 179);
         color: #1C1C1C;
         width: 40rem;
+        width: min(40rem,80%);
         height: 8rem;
         border-radius: 5px;
         font-family: "Inter", sans-serif;
@@ -75,6 +78,7 @@
         justify-content: center;
         align-items: center;
         width: 40rem;
+        width: min(40rem,80%);
         height: 4rem;
         background-color: rgb(141, 191, 179);
         border-radius: 2px;
@@ -98,36 +102,36 @@
         }
     }
 
-
-
-
-
-
-
-
     .loading-container {
         position: absolute;
         display: flex;
         justify-content: center;
         align-items: center;
         height: 100vh;
-      }
+    }
       
-      .loading-circle {
+    .loading-circle {
         width: 80px;
         height: 80px;
         border: 8px solid #ccc;
         border-top: 8px solid #444444;
         border-radius: 50%;
         animation: spin 2s linear infinite;
-      }
+    }
       
-      @keyframes spin {
+    @keyframes spin {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
-      }
+    }
       
-
+    @media (max-width: 650px) {
+        .hearts-bar {
+            gap: 0.5rem;
+            svg {
+                width: 2rem;
+            }
+        }
+    }
 
 
 

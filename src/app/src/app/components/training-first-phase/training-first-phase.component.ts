@@ -89,15 +89,6 @@ export class TrainingFirstPhaseComponent {
     this.solveOperation(inputValue);
   }
 
-  // public solveOperation(inputValue: string) {
-
-  //   if (inputValue.replace(',', '.') != this.actualOperation.solution && !this.isLose         && false) {
-  //     this.onWrongAnswer();
-  //   } else if (inputValue.replace(',', '.') == this.actualOperation.solution && !this.isLose         || true){
-  //     this.onCorrectAnswer();
-  //   }
-  // }
-
   public solveOperation(inputValue: string) {
 
     if (inputValue.replace(',', '.') != this.actualOperation.solution && !this.isLose) {

@@ -20,7 +20,7 @@
         display: flex;
         flex-direction: column;
         background-color: var(--color-secondary);
-        width: min(60rem, 90%);
+        width: min(60rem, 75%);
         height: fit-content;
         padding: 1.5rem;
         border: 1px solid #0000003f;
@@ -31,13 +31,15 @@
             display: flex;
             justify-content: center;
             color: #1C1C1C;
+            text-align: center;
         }
     }
     .options {
         display: flex;
         flex-direction: row;
         align-items: center;
-        width: min(60rem, 90%);
+        width: min(60rem, 75%);
+        overflow-x: hidden;
         padding: 1.5rem;
         padding: 4rem;
         background-color: var(--color-tertiary);
@@ -66,8 +68,9 @@
         }
         div {
             display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            // align-items: center;
+            flex-direction: column;
+            gap: 1rem;
         }
     }
     .options-single-operation {
@@ -99,6 +102,8 @@
         display: flex;
         flex-direction: column;
         width: 50rem;
+        height: 100%;
+        justify-content: space-between;
         gap: 2rem;
     }
     .options-difficulty {
@@ -223,6 +228,143 @@
         }
         .mat-mdc-slider-focus-ripple {
             background-color: transparent !important;
+        }
+    }
+
+    @media (max-width: 991px) {
+        .content {
+            height: 120vh;
+            // height: 130vh;
+            gap: 3rem;
+            justify-content: start;
+            margin-top: 3rem;
+        }
+        .options {
+          flex-direction: column;
+          gap: 2rem;
+          height: fit-content;
+        }
+        .options-operations div {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            flex-direction: row;
+            justify-self: center;
+            button {
+                justify-self: center;
+            }
+        }
+        .options-right {
+            align-items: center;
+            width: 90%;
+
+        }
+        .options-operations {
+            width: 45rem;
+            padding-left: 0;
+            padding-right: 0;
+            width: 90%;
+        }
+        .options-difficulty {
+            width: 45rem;
+            // width: 90%;
+            width: 100%;
+        }
+        .options-lives {
+            width: 45rem;
+            // width: 90%;
+            width: 100%;
+        }
+        .options-single-operation:nth-last-child(-n+3)::after {
+            content: "";
+            position: absolute;
+            top: 130%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: transparent;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .options-lives {
+            height: 10rem;
+        }
+        .options {
+            padding: 3rem;
+        }
+        .options-operations {
+            div {
+                grid-template-columns: repeat(2, 1fr);
+
+            }
+            width: 100%;
+        }
+        .options-right {
+            width: 100%;
+        }
+        .options-single-operation:not(:nth-last-child(-n+2))::after {
+            content: "";
+            position: absolute;
+            top: 130%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.24);
+        }
+        .welcome {
+            p {
+                font-size: 14px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+        }
+        .live-icons {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            width: 90%;
+            gap: 1rem 0;
+            svg {
+                justify-self: center;
+                width: 26px;
+            }
+            // gap: 1rem;
+            // grid-row: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .welcome {
+            width: calc(75% + 3rem);
+        }
+        mat-slider {
+            width: 13rem !important;
+        }
+        .options-operations div {
+            button {
+                width: 9rem;
+                mat-icon {
+                    font-size: 18px;
+                    justify-content: center;
+                    display: flex;
+                    align-items: center;
+                }
+                font-size: 13px;
+            }
+        }
+
+
+
+
+
+
+        .welcome {
+            p {
+                font-size: 14px;
+            }
+            h1 {
+                font-size: 20px;
+            }
         }
     }
 }
