@@ -28,8 +28,8 @@ export class LandingComponent {
     difficultyLevel: 'easy',
     lives: 10,
     operationTypes: ['Addition', 'Substraction', 'Multiplication', 'Division', 'Exponentiation', 'Root'],
-    musicVolume: 100,
-    soundVolume: 100
+    musicVolume: 1.0,
+    soundVolume: 1.0
   };
 
   operations = [
